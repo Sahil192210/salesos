@@ -209,9 +209,9 @@ async function start() {
   // Start Cron
   initCron();
 
-  // Start Express HTTP Server
-  app.listen(PORT, () => {
-    console.log(`[Server] E-Commerce D2C Sales OS backend running on http://localhost:${PORT}`);
+  // Start Express HTTP Server on 0.0.0.0 so Render can bind to it
+  const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`[Server] E-Commerce D2C Sales OS backend running on port ${PORT}`);
   });
 }
 
