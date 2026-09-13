@@ -1,0 +1,12 @@
+{
+  "name": "salesos-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run --prefix frontend build",
+    "vercel-build": "cd frontend && npm install && npm run build"
+  },
+  "dependencies": {
+    "next": "16.3.5"
+  }
+}
