@@ -240,9 +240,11 @@ export default function ProductsPage() {
               ) : (
                 products.map((p) => {
                   const priceWithGst = p.price * (1 + (p.gstPercent || 18) / 100);
-                  const firstImg = p.images && p.images.length > 0 ? p.images[0] : null;
+                  const baseImgUrl = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+                    ? (process.env.NEXT_PUBLIC_API_URL || '')
+                    : 'http://localhost:5000';
                   const displayImg = firstImg 
-                    ? (firstImg.startsWith('http') ? firstImg : `http://localhost:5000${firstImg}`)
+                    ? (firstImg.startsWith('http') ? firstImg : `${baseImgUrl}${firstImg}`)
                     : null;
 
                   return (

@@ -76,7 +76,10 @@ export default function DashboardPage() {
 
   const handleExportAudit = () => {
     const cId = localStorage.getItem('companyId') || '';
-    window.open(`http://localhost:5000/api/audit/export?companyId=${cId}&year=2026`, '_blank');
+    const base = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+      ? (process.env.NEXT_PUBLIC_API_URL || '')
+      : 'http://localhost:5000';
+    window.open(`${base}/api/audit/export?companyId=${cId}&year=2026`, '_blank');
   };
 
   return (
