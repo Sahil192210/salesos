@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "frontend"
+    "frontend",
+    "backend"
   ],
   "scripts": {
+    "start": "node backend/app.js",
     "build": "npm run --prefix frontend build",
     "vercel-build": "npm run --prefix frontend build"
   },
